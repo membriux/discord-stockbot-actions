@@ -85,13 +85,6 @@ class StockAPI:
                 else:
                     best[ticker] = 0
         return results
-        
-
-        
-
-
-
-print(StockAPI.get_all_screeners())
 
 
 
