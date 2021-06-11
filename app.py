@@ -12,6 +12,10 @@ DEBUG=False
 
 @app.route('/')
 def index():
+    return 'Working!'
+
+@app.route('/daily')
+def daily():
     data = StockAPI.get_all_screeners()
     return json.jsonify(data)
 
