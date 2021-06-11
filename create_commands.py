@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-
 APP_ID = os.getenv('APP_ID')
 BOT_TOKEN = os.getenv('BOT_TOKEN')
 
