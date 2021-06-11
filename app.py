@@ -5,11 +5,8 @@ import discord
 import os
 from stock_queries import StockAPI
 
-
 load_dotenv()
-
 app = Flask(__name__)
-client = discord.Client()
 DEBUG=False
 
 
