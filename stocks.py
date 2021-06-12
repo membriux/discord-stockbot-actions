@@ -1,4 +1,3 @@
-from os import EX_UNAVAILABLE
 from selenium import webdriver
 
 GOOGLE_CHROME_PATH = '/app/.apt/usr/bin/google_chrome'
