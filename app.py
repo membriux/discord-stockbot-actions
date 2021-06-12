@@ -10,6 +10,7 @@ app = Flask(__name__)
 DEBUG=False
 
 data = StockAPI.get_all_screeners()
+print(data)
 
 @app.route('/')
 def index():
