@@ -1,8 +1,7 @@
 # Basic flask imports
 from flask import Flask, request, json
 from dotenv import load_dotenv
-from stock_queries import StockAPI, send_data_to_discord
-from stocks import *
+from stock_queries import send_data_to_discord
 
 load_dotenv()
 app = Flask(__name__)
