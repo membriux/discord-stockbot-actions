@@ -56,6 +56,7 @@ class StockAPI:
         screener = StockAPI.screener_options[screener_type]
         signal, filters, order = screener['signal'], screener['filters'], screener['order']
         stock_dict = Screener(signal=signal, filters=filters, order=order)
+        # print(stock_dict.headers)
         for stock_data in stock_dict:
             ticker = Ticker(data=stock_data)
             tickers.append(ticker.name)

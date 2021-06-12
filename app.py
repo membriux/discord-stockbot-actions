@@ -7,10 +7,8 @@ from stock_queries import StockAPI
 
 load_dotenv()
 app = Flask(__name__)
-DEBUG=False
+DEBUG=True
 
-data = StockAPI.get_all_screeners()
-print(data)
 
 @app.route('/')
 def index():
@@ -18,7 +16,7 @@ def index():
 
 @app.route('/daily')
 def daily():
-    
+    data = StockAPI.get_all_screeners()
     return json.jsonify(data)
 
 if __name__ == '__main__':
