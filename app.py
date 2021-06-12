@@ -9,6 +9,7 @@ load_dotenv()
 app = Flask(__name__)
 DEBUG=False
 
+data = StockAPI.get_all_screeners()
 
 @app.route('/')
 def index():
@@ -16,7 +17,7 @@ def index():
 
 @app.route('/daily')
 def daily():
-    data = StockAPI.get_all_screeners()
+    
     return json.jsonify(data)
 
 if __name__ == '__main__':
