@@ -1,9 +1,13 @@
 # Base Url
 from finviz.screener import Screener
-from urllib3.exceptions import InsecureRequestWarning
 from ticker import Ticker
+from dotenv import load_dotenv
+import json
+import requests
+import os
+load_dotenv()
 
-import lxml, lxml.html
+DAILY_DIGEST_URL = os.getenv('DAILY_DIGEST_URL')
 
 class Screeners:
     # Names of screeners
@@ -101,4 +105,28 @@ class StockAPI:
         return results
 
 
-# print(StockAPI.get_all_screeners())
+def send_data_to_discord():
+    digest = "**Daily Digest** \n"
+    ticker_data = StockAPI.get_all_screeners()
+    for data in ticker_data:
+        screener_name, tickers = data['name'], data['results']
+        digest += screener_name + '\n - ' + str(tickers) + '\n\n'
+    
+    data = {"content": digest}
+    response = requests.post(DAILY_DIGEST_URL, data=data)
+    print("Response:", response.status_code)
+    print("content:", response.content)
+
+def test_request():
+    data = {"content": 'abc'}
+    response = requests.post(DAILY_DIGEST_URL, data=data)
+
+    print(response.status_code)
+    print(response.content)
+    return
+    # r = requests.post(DAILY_DIGEST_URL, data="test")
+
+
+if __name__ == "__main__":    
+    send_data_to_discord()
+    # test_request()

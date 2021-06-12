@@ -1,7 +1,7 @@
 # Basic flask imports
 from flask import Flask, request, json
 from dotenv import load_dotenv
-from stock_queries import StockAPI
+from stock_queries import StockAPI, send_data_to_discord
 from stocks import *
 
 load_dotenv()
@@ -16,8 +16,8 @@ def index():
 
 @app.route('/daily')
 def daily():
-    data = StockAPI.get_all_screeners()
-    return json.jsonify(data)
+    send_data_to_discord()
+    return "success"
 
 if __name__ == '__main__':
     app.run(debug=DEBUG)
