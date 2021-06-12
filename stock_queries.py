@@ -3,6 +3,8 @@ from finviz.screener import Screener
 from urllib3.exceptions import InsecureRequestWarning
 from ticker import Ticker
 
+import lxml, lxml.html
+
 class Screeners:
     # Names of screeners
     insider_buy = "insider_buy"
@@ -57,6 +59,8 @@ class StockAPI:
         signal, filters, order = screener['signal'], screener['filters'], screener['order']
         stock_dict = Screener(signal=signal, filters=filters, order=order)
         # print(stock_dict.headers)
+        # print(lxml.html.tostring())
+        # print(stock_dict._url)
         for stock_data in stock_dict:
             ticker = Ticker(data=stock_data)
             tickers.append(ticker.name)
