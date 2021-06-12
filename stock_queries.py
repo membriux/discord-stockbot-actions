@@ -94,5 +94,4 @@ class StockAPI:
         
         return results
 
-print(StockAPI.get_all_screeners())
 
