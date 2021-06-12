@@ -1,13 +1,13 @@
 # Basic flask imports
 from flask import Flask, request, json
 from dotenv import load_dotenv
-import discord
-import os
 from stock_queries import StockAPI
+from stocks import *
 
 load_dotenv()
 app = Flask(__name__)
 DEBUG=True
+
 
 
 @app.route('/')
