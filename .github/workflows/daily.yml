@@ -20,7 +20,8 @@ jobs:
           python-version: 3.9 #install the python needed
       - name: pip install packages
         run: |
-          pip install finviz python-dotenv
+          pip install python-dotenv
+          pip install -U git+https://github.com/mariostoev/finviz
       - name: execute py script # run the run.py to get the latest data
         run: |
           python stock_queries.py
