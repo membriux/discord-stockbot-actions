@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        QUOTE=$(curl -s http://api.quotable.io/random | jq '"\(.content) - _\(.author)_"')
-        curl -s -X POST "${{ secrets.DAILY_DIGEST_URL }}" -d "content=$QUOTE"
+        DAILY_DIGEST=$(curl -s https://memo-stock-bot.herokuapp.com/daily | jq -r '.[] | "\(.name) \(.results)" ' | sed 's/"//g')
+        DAILY_DIGEST2=$(curl -s https://memo-stock-bot.herokuapp.com/daily | jq -r '.[] | "\(.name) \(.results)" ' | sed 's/"//g')
+        curl -s -X POST "${{ secrets.DAILY_DIGEST_URL }}" -d "content=$DAILY_DIGEST"
+        curl -s -X POST "${{ secrets.DAILY_DIGEST_URL }}" -d "content=$DAILY_DIGEST2"
 
