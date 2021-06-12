@@ -12,4 +12,5 @@ jobs:
     steps:
     - run: |
         QUOTE=$(curl -s http://api.quotable.io/random | jq '"\(.content) - _\(.author)_"')
-        curl -s -X POST "${{ secrets.WEBHOOK_URL }}" -d "content=$QUOTE"
+        curl -s -X POST "${{ secrets.DAILY_DIGEST_URL }}" -d "content=$QUOTE"
+

@@ -1,0 +1,1 @@
+curl -s http://api.quotable.io/random | jq '"(.\content)"'

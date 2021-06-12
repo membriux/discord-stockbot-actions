@@ -63,13 +63,20 @@ class StockAPI:
 
 
     def get_all_screeners() -> dict:
-        stock_dicts = {}
-        
-        # for screener in [Screeners.sleeping_monster, Screeners.ma50_cross]:
-        for screener in Screeners.all:
-            stock_dicts[screener] = StockAPI.get_data_from(screener_type=screener)
-        stock_dicts["Two or more screeners"] = StockAPI.get_best(stock_dicts)
-        return stock_dicts
+        result = []
+        screener_dict = {}
+        for screener in [Screeners.sleeping_monster, Screeners.ma50_cross]:
+        # for screener in Screeners.all:
+            screener_dict["name"] = screener
+            screener_dict["results"] = StockAPI.get_data_from(screener_type=screener)
+            result.append(screener_dict)
+            screener_dict = {}
+    
+        screener_dict["name"] = "Two or more"
+        screener_dict["results"] = StockAPI.get_best(screener_dict)
+        result.append(screener_dict)
+
+        return result
 
 
     def get_best(stock_dicts):
@@ -84,7 +91,8 @@ class StockAPI:
                         results.append(ticker)
                 else:
                     best[ticker] = 0
+        
         return results
 
-
+print(StockAPI.get_all_screeners())
 
