@@ -65,8 +65,8 @@ class StockAPI:
     def get_all_screeners() -> dict:
         result = []
         screener_dict = {}
-        for screener in [Screeners.sleeping_monster, Screeners.ma50_cross]:
-        # for screener in Screeners.all:
+        # for screener in [Screeners.sleeping_monster, Screeners.ma50_cross]:
+        for screener in Screeners.all:
             screener_dict["name"] = screener
             screener_dict["results"] = StockAPI.get_data_from(screener_type=screener)
             result.append(screener_dict)
