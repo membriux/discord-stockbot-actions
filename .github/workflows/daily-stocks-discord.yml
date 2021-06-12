@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: |
-        DAILY_DIGEST=$(curl -s https://memo-stock-bot.herokuapp.com/daily | jq -r '.[] | "\(.name) \(.results)" ' | sed 's/"//g')
-        DAILY_DIGEST2=$(curl -s https://memo-stock-bot.herokuapp.com/daily | jq -r '.[] | "\(.name) \(.results)" ' | sed 's/"//g')
+        DAILY_DIGEST=$(curl -s https://memo-stock-bot.herokuapp.com/daily | jq -r '.[] | "\(.name) \n • \(.results) \n" ' | sed 's/"//g')
         curl -s -X POST "${{ secrets.DAILY_DIGEST_URL }}" -d "content=$DAILY_DIGEST"
-        curl -s -X POST "${{ secrets.DAILY_DIGEST_URL }}" -d "content=$DAILY_DIGEST2"
 
