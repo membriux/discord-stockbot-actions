@@ -16,6 +16,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.9 #install the python needed
+      - name: pip install packages
+        run: |
+          pip install finviz python-dotenv
       - name: execute py script # run the run.py to get the latest data
         run: |
           python stock_queries.py

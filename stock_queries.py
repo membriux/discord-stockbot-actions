@@ -2,7 +2,6 @@
 from finviz.screener import Screener
 from ticker import Ticker
 from dotenv import load_dotenv
-import json
 import requests
 import os
 load_dotenv()
