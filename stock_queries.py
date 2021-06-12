@@ -127,6 +127,7 @@ def test_request():
     # r = requests.post(DAILY_DIGEST_URL, data="test")
 
 
-# if __name__ == "__main__":    
-#     send_data_to_discord()
-#     # test_request()h
+
+if __name__ == "__main__":    
+    send_data_to_discord()
+    # test_request()
