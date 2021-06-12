@@ -1,1 +1,1 @@
-curl -s http://api.quotable.io/random | jq '"(.\content)"'
+curl -s https://memo-stock-bot.herokuapp.com/daily | jq '.[] | "\(.name) \(.results)" '
