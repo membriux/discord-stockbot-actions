@@ -109,7 +109,7 @@ def send_data_to_discord():
     ticker_data = StockAPI.get_all_screeners()
     for data in ticker_data:
         screener_name, tickers = data['name'], data['results']
-        digest += screener_name + '\n - ' + str(tickers) + '\n\n'
+        digest += screener_name + '\n\t' + str(tickers).replace("'", "").replace("[", "").replace("]", "") + '\n\n'
     
     data = {"content": digest}
     response = requests.post(DAILY_DIGEST_URL, data=data)
