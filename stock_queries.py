@@ -57,17 +57,20 @@ class StockAPI:
     }
     
     def get_data_from(screener_type: str):
-        tickers = []
-        screener = StockAPI.screener_options[screener_type]
-        signal, filters, order = screener['signal'], screener['filters'], screener['order']
-        stock_dict = Screener(signal=signal, filters=filters, order=order)
-        # print(stock_dict.headers)
-        # print(lxml.html.tostring())
-        # print(stock_dict._url)
-        for stock_data in stock_dict:
-            ticker = Ticker(data=stock_data)
-            tickers.append(ticker.name)
-        return tickers
+        try: 
+            tickers = []
+            screener = StockAPI.screener_options[screener_type]
+            signal, filters, order = screener['signal'], screener['filters'], screener['order']
+            stock_dict = Screener(signal=signal, filters=filters, order=order)
+            # print(stock_dict.headers)
+            # print(lxml.html.tostring())
+            # print(stock_dict._url)
+            for stock_data in stock_dict:
+                ticker = Ticker(data=stock_data)
+                tickers.append(ticker.name)
+            return tickers
+        except: 
+            return []
 
 
     def get_all_screeners() -> dict:
